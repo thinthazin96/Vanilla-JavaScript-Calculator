@@ -1,6 +1,7 @@
+/* * select all elements */
 *, *::before, *::after {
   box-sizing: border-box;
-  font-family: Gotham Rounded, sans-serif;
+  font-family: Gotham Rounded, sans-serif; /* if Gotham Rounded is not found used sans-serif */
   font-weight: normal;
 }
 
@@ -13,12 +14,14 @@ body {
 .calculator-grid {
   display: grid;
   justify-content: center;
-  align-content: center;
-  min-height: 100vh;
-  grid-template-columns: repeat(4, 100px);
-  grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+  align-content: center; /* center only horizontally */ 
+  min-height: 100vh; /* center also vertically */
+  grid-template-columns: repeat(4, 100px); /* created 4 columns: 100 px wide each */
+  /* min 120px & max as long as the input is on the display & create 5 row: 100 px wide */
+  grid-template-rows: minmax(120px, auto) repeat(5, 100px); 
 }
-
+ 
+/* applies these attributes to the button which is the direct child of calculator-grid */
 .calculator-grid > button {
   cursor: pointer;
   font-size: 2rem;
@@ -26,23 +29,24 @@ body {
   outline: none;
   background-color: rgba(255, 255, 255, .75);
 }
-
+/* chaged color when hovering on the button */
 .calculator-grid > button:hover {
   background-color: rgba(255, 255, 255, .9);
 }
 
 .span-two {
-  grid-column: span 2;
+  grid-column: span 2; /* take two space for .span-two class */
 }
 
 .output {
-  grid-column: 1 / -1;
+  grid-column: 1 / -1; /* take space from column 1 to -1(last column) */
   background-color: rgba(0, 0, 0, .75);
   display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  flex-direction: column;
+  align-items: flex-end; /* put the output on the right side */
+  justify-content: space-around;  /* put the space between each others and also from top and bottom */
+  flex-direction: column; /* set elements vertically */
   padding: 10px;
+  /* wrap the numbers to the next line if it is too long */
   word-wrap: break-word;
   word-break: break-all;
 }
